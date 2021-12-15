@@ -1,0 +1,36 @@
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <h1>Formulaire d'enregistrement</h1>
+      <hr>
+      <ul>
+
+        <li>
+          <label>Prenom</label>
+          <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Le prénom est requis </div>
+          </div>
+        </li>
+  <br>
+        <li>
+          <label>Pseudo</label>
+          <input type="text" formControlName="pseudo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['pseudo'].errors }" />
+          <div *ngIf="submitted && f['pseudo'].errors" class="invalid-feedback">
+            <div *ngIf="f['pseudo'].errors['required']">Le pseudo est requis</div>
+          </div>
+        </li>
+  <br>
+        <li>
+          <label>Email</label>
+          <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email est requis</div>
+            <div *ngIf="f['email'].errors['email']">Email doit être une adresse e-mail valide avec un @</div>
+          </div>
+        </li>
+  <br>
+      </ul>
+    </div>
+    <button type="submit">Ajouter</button>
+  </form>
